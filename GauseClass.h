@@ -5,7 +5,7 @@
 #include <iomanip>
 using namespace std;
 
-// Оператор для вычитания векторов
+// РћРїРµСЂР°С‚РѕСЂ РґР»СЏ РІС‹С‡РёС‚Р°РЅРёСЏ РІРµРєС‚РѕСЂРѕРІ
 vector<float> operator-(const vector<float>& a, const vector<float>& b) {
 	if (a.size() != b.size())
 		throw("a.size() != b.size()");
@@ -14,7 +14,7 @@ vector<float> operator-(const vector<float>& a, const vector<float>& b) {
 		c[i] = a[i] - b[i];
 	return c;
 }
-// Оператор для суммы векторов
+// РћРїРµСЂР°С‚РѕСЂ РґР»СЏ СЃСѓРјРјС‹ РІРµРєС‚РѕСЂРѕРІ
 vector<float> operator+(const vector<float>& a, const vector<float>& b) {
 	if (a.size() != b.size())
 		throw("a.size() != b.size()");
@@ -23,14 +23,14 @@ vector<float> operator+(const vector<float>& a, const vector<float>& b) {
 		c[i] = a[i] + b[i];
 	return c;
 }
-// Оператор для умножения векторов на число
+// РћРїРµСЂР°С‚РѕСЂ РґР»СЏ СѓРјРЅРѕР¶РµРЅРёСЏ РІРµРєС‚РѕСЂРѕРІ РЅР° С‡РёСЃР»Рѕ
 vector<float> operator*(const vector<float>& a, const float& b) {
 	vector<float> c(a.size());
 	for (int i = 0; i < a.size(); ++i)
 		c[i] = a[i] * b;
 	return c;
 }
-// Оператор для деления вектора на число
+// РћРїРµСЂР°С‚РѕСЂ РґР»СЏ РґРµР»РµРЅРёСЏ РІРµРєС‚РѕСЂР° РЅР° С‡РёСЃР»Рѕ
 vector<float> operator/(const vector<float>& a, const float& b) {
 	vector<float> c(a.size());
 	if (b != 0) {
@@ -41,15 +41,15 @@ vector<float> operator/(const vector<float>& a, const float& b) {
 }
 class GauseClass {
 public:
-	vector<vector<float>> MainMatrix;				// Главная матрица
-	vector<vector<float>> OriginalMatrix;			// Оригинальная матрица
-	vector<vector<float>> SingleMatrix;				// Еденичная матрица
-	vector<float> Vector_B;							// Результат
-	vector<float> OriginalVector_B;					// Cтолбец свободных членов
-	vector<float> ResidualVector;					// Вектор невязки
-	int size;										// Размерность матрицы
-	int PermutationsNumber;							// Число перестановок
-	bool type;										// Тип матрицы, вырожденная или невырожденная
+	vector<vector<float>> MainMatrix;				// Р“Р»Р°РІРЅР°СЏ РјР°С‚СЂРёС†Р°
+	vector<vector<float>> OriginalMatrix;			// РћСЂРёРіРёРЅР°Р»СЊРЅР°СЏ РјР°С‚СЂРёС†Р°
+	vector<vector<float>> SingleMatrix;				// Р•РґРµРЅРёС‡РЅР°СЏ РјР°С‚СЂРёС†Р°
+	vector<float> Vector_B;							// Р РµР·СѓР»СЊС‚Р°С‚
+	vector<float> OriginalVector_B;					// CС‚РѕР»Р±РµС† СЃРІРѕР±РѕРґРЅС‹С… С‡Р»РµРЅРѕРІ
+	vector<float> ResidualVector;					// Р’РµРєС‚РѕСЂ РЅРµРІСЏР·РєРё
+	int size;										// Р Р°Р·РјРµСЂРЅРѕСЃС‚СЊ РјР°С‚СЂРёС†С‹
+	int PermutationsNumber;							// Р§РёСЃР»Рѕ РїРµСЂРµСЃС‚Р°РЅРѕРІРѕРє
+	bool type;										// РўРёРї РјР°С‚СЂРёС†С‹, РІС‹СЂРѕР¶РґРµРЅРЅР°СЏ РёР»Рё РЅРµРІС‹СЂРѕР¶РґРµРЅРЅР°СЏ
 	GauseClass() {
 		PermutationsNumber = 0;
 		ReadInputFile("input.txt");
@@ -67,7 +67,7 @@ public:
 		SaveResultFile("result.txt");
 	}
 private:
-	// Чтение данных из файла
+	// Р§С‚РµРЅРёРµ РґР°РЅРЅС‹С… РёР· С„Р°Р№Р»Р°
 	void ReadInputFile(string FileName) {
 		ifstream input(FileName);
 		if (input.is_open())
@@ -91,30 +91,30 @@ private:
 		}
 		input.close();
 	}
-	// Сохранение результатов в файл
+	// РЎРѕС…СЂР°РЅРµРЅРёРµ СЂРµР·СѓР»СЊС‚Р°С‚РѕРІ РІ С„Р°Р№Р»
 	void SaveResultFile(string FileName) {
 		ofstream output(FileName);
 		if (output.is_open()) {
-			output << "Исходная матрица:" << endl;
+			output << "РСЃС…РѕРґРЅР°СЏ РјР°С‚СЂРёС†Р°:" << endl;
 			for (int i = 0; i < size; ++i) {
 				for (int q = 0; q < size; ++q) {
 					output << " " << setprecision(4) << OriginalMatrix[i][q] << "\t";
 				}
 				output << endl;
 			}
-			output << endl << "Столбец свободных членов:" << endl;
+			output << endl << "РЎС‚РѕР»Р±РµС† СЃРІРѕР±РѕРґРЅС‹С… С‡Р»РµРЅРѕРІ:" << endl;
 			for (int i = 0; i < size; ++i) {
 				output << " " << OriginalVector_B[i] << endl;
 			}
 			output << endl << "Det(A) = " << FindDeterminant() << "\t";
 			if (type) {
-				output << "Матрица является невырожденной" << endl;
+				output << "РњР°С‚СЂРёС†Р° СЏРІР»СЏРµС‚СЃСЏ РЅРµРІС‹СЂРѕР¶РґРµРЅРЅРѕР№" << endl;
 				output << endl;
-				output << "Результат:" << "\t\tНевязки:" << endl;
+				output << "Р РµР·СѓР»СЊС‚Р°С‚:" << "\t\tРќРµРІСЏР·РєРё:" << endl;
 				for (int i = 0; i < size; ++i) {
 					output << "X[" << i + 1 << "] = " << Vector_B[i] << "\t\t" << ResidualVector[i] << endl;
 				}
-				output << endl << "Обратная матрица:" << endl;
+				output << endl << "РћР±СЂР°С‚РЅР°СЏ РјР°С‚СЂРёС†Р°:" << endl;
 				for (int i = 0; i < size; ++i) {
 					for (int q = 0; q < size; ++q) {
 						output << " " << setprecision(4) << SingleMatrix[i][q] << "\t";
@@ -123,14 +123,14 @@ private:
 				}
 			}
 			else {
-				output << "Матрица является вырожденной" << endl;
+				output << "РњР°С‚СЂРёС†Р° СЏРІР»СЏРµС‚СЃСЏ РІС‹СЂРѕР¶РґРµРЅРЅРѕР№" << endl;
 			}
 		}
 		else {
 			cout << "Error save results!";
 		}
 	}
-	// Заполнение еденичной матрицы
+	// Р—Р°РїРѕР»РЅРµРЅРёРµ РµРґРµРЅРёС‡РЅРѕР№ РјР°С‚СЂРёС†С‹
 	void CreateSingleMatrix() {
 		for (int i = 0; i < size; ++i) {
 			vector<float> temp;
@@ -141,7 +141,7 @@ private:
 			SingleMatrix[i][i] = 1;
 		}
 	}
-	// Преобразование матрицы к треугольному виду
+	// РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РјР°С‚СЂРёС†С‹ Рє С‚СЂРµСѓРіРѕР»СЊРЅРѕРјСѓ РІРёРґСѓ
 	void TriangleMatrix() {
 		float temp_num;
 		for (int q = 0; q < size-1; ++q) {
@@ -153,7 +153,7 @@ private:
 			}
 		}
 	}
-	// Поиск результата
+	// РџРѕРёСЃРє СЂРµР·СѓР»СЊС‚Р°С‚Р°
 	void FindResult() {
 		float sum;
 		for (int i = size-1; i >= 0; --i) {
@@ -164,7 +164,7 @@ private:
 			Vector_B[i] = sum / MainMatrix[i][i];
 		}
 	}
-	// Алгоритм выбора главного элемента
+	// РђР»РіРѕСЂРёС‚Рј РІС‹Р±РѕСЂР° РіР»Р°РІРЅРѕРіРѕ СЌР»РµРјРµРЅС‚Р°
 	void OutputMainElement() {
 		int index;
 		bool NeedPermutation = 0;
@@ -178,16 +178,16 @@ private:
 				}
 			}
 			if (NeedPermutation) {
-				// Перестановка строк основной матрицы
+				// РџРµСЂРµСЃС‚Р°РЅРѕРІРєР° СЃС‚СЂРѕРє РѕСЃРЅРѕРІРЅРѕР№ РјР°С‚СЂРёС†С‹
 				vector<float> temp = MainMatrix[i];
 				MainMatrix[i] = MainMatrix[index];
 				MainMatrix[index] = temp;
 				PermutationsNumber++;
-				// Перестановка cтолбца свободных членов
+				// РџРµСЂРµСЃС‚Р°РЅРѕРІРєР° cС‚РѕР»Р±С†Р° СЃРІРѕР±РѕРґРЅС‹С… С‡Р»РµРЅРѕРІ
 				float temp_B = Vector_B[i];
 				Vector_B[i] = Vector_B[index];
 				Vector_B[index] = temp_B;
-				// Перестановка еденичной матрицы
+				// РџРµСЂРµСЃС‚Р°РЅРѕРІРєР° РµРґРµРЅРёС‡РЅРѕР№ РјР°С‚СЂРёС†С‹
 				temp = SingleMatrix[i];
 				SingleMatrix[i] = SingleMatrix[index];
 				SingleMatrix[index] = temp;
@@ -196,41 +196,41 @@ private:
 			}
 		}
 	}
-	// Поиск обратной матрицы
+	// РџРѕРёСЃРє РѕР±СЂР°С‚РЅРѕР№ РјР°С‚СЂРёС†С‹
 	void InverseMatrix() {
 		vector<vector<float>> tempOriginMatrix = MainMatrix;
 		float temp_num;
-		// Прямой ход (Зануление нижнего левого угла)
+		// РџСЂСЏРјРѕР№ С…РѕРґ (Р—Р°РЅСѓР»РµРЅРёРµ РЅРёР¶РЅРµРіРѕ Р»РµРІРѕРіРѕ СѓРіР»Р°)
 		for (int q = 0; q < size - 1; ++q) {
 			SingleMatrix[q] = SingleMatrix[q] / tempOriginMatrix[q][q];
 			tempOriginMatrix[q] = tempOriginMatrix[q] / tempOriginMatrix[q][q];
 			for (int i = q + 1; i < size; ++i) {
-				// Преобразование основной матрицы
+				// РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РѕСЃРЅРѕРІРЅРѕР№ РјР°С‚СЂРёС†С‹
 				vector<float> temp = tempOriginMatrix[q];
 				temp_num = tempOriginMatrix[i][q] / tempOriginMatrix[q][q];
 				tempOriginMatrix[i] = tempOriginMatrix[i] - temp * temp_num;
-				// Преоброзование еденичной матрицы
+				// РџСЂРµРѕР±СЂРѕР·РѕРІР°РЅРёРµ РµРґРµРЅРёС‡РЅРѕР№ РјР°С‚СЂРёС†С‹
 				temp = SingleMatrix[q];
 				SingleMatrix[i] = SingleMatrix[i] - temp * temp_num;
 			}
 		}
-		// Обратный ход (Зануление верхнего правого угла)
+		// РћР±СЂР°С‚РЅС‹Р№ С…РѕРґ (Р—Р°РЅСѓР»РµРЅРёРµ РІРµСЂС…РЅРµРіРѕ РїСЂР°РІРѕРіРѕ СѓРіР»Р°)
 		vector<vector<float>> some = tempOriginMatrix;
 		for (int q = size - 1; q >= 0; --q) {
 			SingleMatrix[q] = SingleMatrix[q] / some[q][q];
 			tempOriginMatrix[q] = tempOriginMatrix[q] / some[q][q];
 			for (int i = q - 1; i >= 0; --i) {
-				// Преобразование основной матрицы
+				// РџСЂРµРѕР±СЂР°Р·РѕРІР°РЅРёРµ РѕСЃРЅРѕРІРЅРѕР№ РјР°С‚СЂРёС†С‹
 				vector<float> temp = tempOriginMatrix[q];
 				temp_num = tempOriginMatrix[i][q] / tempOriginMatrix[q][q];
 				tempOriginMatrix[i] = tempOriginMatrix[i] - temp * temp_num;
-				// Преоброзование еденичной матрицы
+				// РџСЂРµРѕР±СЂРѕР·РѕРІР°РЅРёРµ РµРґРµРЅРёС‡РЅРѕР№ РјР°С‚СЂРёС†С‹
 				temp = SingleMatrix[q];
 				SingleMatrix[i] = SingleMatrix[i] - temp * temp_num;
 			}
 		}
 	}
-	// Определить тип матрицы, true - невырожденная, false - вырожденная
+	// РћРїСЂРµРґРµР»РёС‚СЊ С‚РёРї РјР°С‚СЂРёС†С‹, true - РЅРµРІС‹СЂРѕР¶РґРµРЅРЅР°СЏ, false - РІС‹СЂРѕР¶РґРµРЅРЅР°СЏ
 	bool ChechTypeMatrix() {
 		bool answer;
 		if (FindDeterminant() == 0) {
@@ -241,7 +241,7 @@ private:
 		}
 		return answer;
 	}
-	// Поиск вектора невязки
+	// РџРѕРёСЃРє РІРµРєС‚РѕСЂР° РЅРµРІСЏР·РєРё
 	void FindResidualVector() {
 		ResidualVector = OriginalVector_B;
 		for (int i = 0; i < size; ++i) {
@@ -254,7 +254,7 @@ private:
 		}
 	}
 public:
-	// Поиск определителя
+	// РџРѕРёСЃРє РѕРїСЂРµРґРµР»РёС‚РµР»СЏ
 	float FindDeterminant() {
 		float answer = MainMatrix[0][0];
 		for (int i = 1; i < size; ++i) {
@@ -262,7 +262,7 @@ public:
 		}
 		return answer;
 	}
-	// Вывод матрицы в консоль
+	// Р’С‹РІРѕРґ РјР°С‚СЂРёС†С‹ РІ РєРѕРЅСЃРѕР»СЊ
 	void PrintMatrix(vector<vector<float>> &Matrix) {
 		for (int i = 0; i < size; ++i) {
 			for (int q = 0; q < size; ++q) {
@@ -271,7 +271,7 @@ public:
 			cout << endl;
 		}
 	}
-	// Вывод вектора в консоль
+	// Р’С‹РІРѕРґ РІРµРєС‚РѕСЂР° РІ РєРѕРЅСЃРѕР»СЊ
 	void PrintVector(vector<float> &vec) {
 		for (int i = 0; i < size; ++i) {
 			cout << " " << vec[i] << endl;
