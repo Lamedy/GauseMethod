@@ -3,22 +3,22 @@
 int main() {
 	setlocale(LC_ALL, "RUS");
 	GauseClass A;
-	cout << "Èñõîäíàÿ ìàòðèöà:" << endl;
+	cout << "Ð˜ÑÑ…Ð¾Ð´Ð½Ð°Ñ Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ð°:" << endl;
 	A.PrintMatrix(A.OriginalMatrix);
-	cout << endl << "Ñòîëáåö ñâîáîäíûõ ÷ëåíîâ:" << endl;
+	cout << endl << "Ð¡Ñ‚Ð¾Ð»Ð±ÐµÑ† ÑÐ²Ð¾Ð±Ð¾Ð´Ð½Ñ‹Ñ… Ñ‡Ð»ÐµÐ½Ð¾Ð²:" << endl;
 	A.PrintVector(A.OriginalVector_B);
 	cout << endl << "Det(A) = " << A.FindDeterminant() << "\t";
 	if (A.type) {
-		cout << "Ìàòðèöà ÿâëÿåòñÿ íåâûðîæäåííîé" << endl;
+		cout << "ÐœÐ°Ñ‚Ñ€Ð¸Ñ†Ð° ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð½ÐµÐ²Ñ‹Ñ€Ð¾Ð¶Ð´ÐµÐ½Ð½Ð¾Ð¹" << endl;
 		cout << endl;
-		cout << "Ðåçóëüòàò:" << "\t\tÍåâÿçêè:" << endl;
+		cout << "Ð ÐµÐ·ÑƒÐ»ÑŒÑ‚Ð°Ñ‚:" << "\t\tÐÐµÐ²ÑÐ·ÐºÐ¸:" << endl;
 		for (int i = 0; i < A.size; ++i) {
 			cout << "X[" << i + 1 << "] = " << A.Vector_B[i] << "\t\t" << A.ResidualVector[i] << endl;
 		}
-		cout << endl << "Îáðàòíàÿ ìàòðèöà:" << endl;
+		cout << endl << "ÐžÐ±Ñ€Ð°Ñ‚Ð½Ð°Ñ Ð¼Ð°Ñ‚Ñ€Ð¸Ñ†Ð°:" << endl;
 		A.PrintMatrix(A.SingleMatrix);
 	}
 	else {
-		cout << "Ìàòðèöà ÿâëÿåòñÿ âûðîæäåííîé" << endl;
+		cout << "ÐœÐ°Ñ‚Ñ€Ð¸Ñ†Ð° ÑÐ²Ð»ÑÐµÑ‚ÑÑ Ð²Ñ‹Ñ€Ð¾Ð¶Ð´ÐµÐ½Ð½Ð¾Ð¹" << endl;
 	}
 }
